@@ -19,21 +19,22 @@ headers.forEach((el) => {
 
     if (!hasNumber) {
       isSorted = arraOfNames.sort();
-    } else {
-      if (columnInd === 3) {
-        isSorted = arraOfNames.sort((a, b) => {
-          return (
-            Number(a.slice(1).replace(',', '.')) -
-            Number(b.slice(1).replace(',', '.'))
-          );
-        });
-      }
-      isSorted = arraOfNames.sort((a, b) => a - b);
     }
 
-    rows.forEach((row, i) => {
-      row.children[columnInd].textContent = '';
-    });
+    if (!hasNumber) {
+      isSorted = arraOfNames.sort();
+    }
+
+    if (columnInd === 3) {
+      isSorted = arraOfNames.sort((a, b) => {
+        return (
+          Number(a.slice(1).replace(',', '.')) -
+          Number(b.slice(1).replace(',', '.'))
+        );
+      });
+    } else {
+      isSorted = arraOfNames.sort((a, b) => Number(a) - Number(b));
+    }
 
     rows.forEach((row, i) => {
       if (columnInd === 3) {
