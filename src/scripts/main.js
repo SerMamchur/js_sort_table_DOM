@@ -17,14 +17,6 @@ headers.forEach((el) => {
     const hasNumber = /\d/.test(arraOfNames[0]);
     let isSorted = [];
 
-    if (!hasNumber) {
-      isSorted = arraOfNames.sort();
-    }
-
-    if (!hasNumber) {
-      isSorted = arraOfNames.sort();
-    }
-
     if (columnInd === 3) {
       isSorted = arraOfNames.sort((a, b) => {
         return (
@@ -32,6 +24,8 @@ headers.forEach((el) => {
           Number(b.slice(1).replace(',', '.'))
         );
       });
+    } else if (!hasNumber) {
+      isSorted = arraOfNames.sort();
     } else {
       isSorted = arraOfNames.sort((a, b) => Number(a) - Number(b));
     }
